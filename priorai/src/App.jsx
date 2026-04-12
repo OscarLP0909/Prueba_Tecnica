@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { prioritizeTasks } from './lib/gemini'
 import './App.css'
 
@@ -16,6 +16,11 @@ export default function App() {
   const [tasks, setTasks] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [dark, setDark] = useState(false)
+
+  useEffect(() => {
+    document.body.classList.toggle('dark', dark)
+  }, [dark])
 
   async function handlePrioritize() {
     const lines = input.split('\n').map(t => t.trim()).filter(Boolean)
@@ -42,8 +47,14 @@ export default function App() {
 
   return (
     <div className="app">
+      <button className="theme-toggle" onClick={() => setDark(!dark)}>
+        {dark ? '☀ Claro' : '☾ Oscuro'}
+      </button>
+
       <header>
-        <h1>Prior<span>AI</span></h1>
+        <div className="logo">
+          <span className="logo-prior">Prior</span><span className="logo-ai">AI</span>
+        </div>
         <p>Escribe tus tareas y la IA las prioriza con explicaciones</p>
       </header>
 
@@ -92,8 +103,8 @@ export default function App() {
               </div>
             )
           })}
-          <div className="actions">
-            <button className="secondary" onClick={handleReset}>← Volver</button>
+          <div className="bottom-actions">
+            <button className="secondary" onClick={handleReset}>← Nueva lista</button>
           </div>
         </>
       )}

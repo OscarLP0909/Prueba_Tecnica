@@ -4,6 +4,9 @@ Escribe tus tareas del día y la IA las ordena por prioridad con una justificaci
 
 ## Demo
 
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
 
 
 ## Stack
