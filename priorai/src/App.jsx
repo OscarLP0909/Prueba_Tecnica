@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { prioritizeTasks } from './lib/gemini'
 import './App.css'
+import { Analytics } from "@vercel/analytics/next"
 
 const BADGE_COLORS = [
   { bg: '#EEEDFE', color: '#3C3489' },
@@ -197,6 +198,7 @@ export default function App() {
           </div>
         )}
       </main>
+      <Analytics/>
     </div>
   )
 }
